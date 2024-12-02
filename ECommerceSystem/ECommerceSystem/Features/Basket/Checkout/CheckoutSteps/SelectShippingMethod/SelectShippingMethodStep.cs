@@ -1,12 +1,13 @@
-using ECommerceSystem.Features.Basket.Checkout.Factories;
 using ECommerceSystem.Features.Basket.Checkout.Models;
+using ECommerceSystem.Features.Basket.Checkout.Models.CheckoutPipeline;
+using ECommerceSystem.Features.Basket.Checkout.Models.MaybeMonad;
 using ECommerceSystem.Features.Shared.Renderers;
 
-namespace ECommerceSystem.Features.Basket.Checkout.CheckoutSteps;
+namespace ECommerceSystem.Features.Basket.Checkout.CheckoutSteps.SelectShippingMethod;
 
-public class SelectShippingMethod(ShippingMethodFactory shippingMethodFactory): IPipelineStep<CheckoutContext>
+public class SelectShippingMethodStep(ShippingMethodFactory shippingMethodFactory): IPipelineStep<CheckoutContext>
 {
-    public CheckoutContext? Run(CheckoutContext context)
+    public Maybe<CheckoutContext> Run(CheckoutContext context)
     {
         var shippingMethod = Screen.GetChoice(
             "Choose a shipping method:",

@@ -1,16 +1,18 @@
 ﻿using ECommerceSystem.Features.Basket.Checkout.Models;
+using ECommerceSystem.Features.Basket.Checkout.Models.CheckoutPipeline;
+using ECommerceSystem.Features.Basket.Checkout.Models.MaybeMonad;
 using ECommerceSystem.Features.Shared.Renderers;
 
 namespace ECommerceSystem.Features.Basket.Checkout.CheckoutSteps;
 
-public class CheckBasketHasItems : IPipelineStep<CheckoutContext>
+public class CheckBasketHasItemsStep : IPipelineStep<CheckoutContext>
 {
-    public CheckoutContext? Run(CheckoutContext context)
+    public Maybe<CheckoutContext> Run(CheckoutContext context)
     {
         if (context.OrderBasket.IsEmpty)
         {
             Screen.OutputWarning("\nYour basket is empty. Add items before finalizing the order.");
-            return null;
+            return Maybe<CheckoutContext>.None;
         }
 
         context.OrderBasket.Render(new OrderBasketRenderer());

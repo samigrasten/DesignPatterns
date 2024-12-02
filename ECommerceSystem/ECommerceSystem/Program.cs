@@ -3,19 +3,19 @@ using ECommerceSystem.Features.Application.Exit;
 using ECommerceSystem.Features.Application.MainMenu;
 using ECommerceSystem.Features.Basket.Checkout;
 using ECommerceSystem.Features.Basket.Checkout.CheckoutSteps;
-using ECommerceSystem.Features.Basket.Checkout.Factories;
-using ECommerceSystem.Features.Basket.Checkout.PaymentMethods;
+using ECommerceSystem.Features.Basket.Checkout.CheckoutSteps.ProcessOrder;
+using ECommerceSystem.Features.Basket.Checkout.CheckoutSteps.SelectPaymentMethod;
+using ECommerceSystem.Features.Basket.Checkout.CheckoutSteps.SelectShippingMethod;
+using ECommerceSystem.Features.Basket.Checkout.Models.PaymentMethods;
+using ECommerceSystem.Features.Basket.Checkout.Models.ShippingMethods;
 using ECommerceSystem.Features.Basket.Checkout.PostProcessors;
 using ECommerceSystem.Features.Basket.Checkout.PostProcessors.CreateOrderConfirmation;
-using ECommerceSystem.Features.Basket.Checkout.ShippingMethods;
 using ECommerceSystem.Features.Basket.ViewBasket;
 using ECommerceSystem.Features.Products.AddProductToBasket;
 using ECommerceSystem.Features.Products.DisplayProducts;
 using ECommerceSystem.Features.Shared;
 using ECommerceSystem.Features.Shared.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 var serviceProvider = new ServiceCollection()
     .AddLogging()
@@ -32,7 +32,7 @@ var serviceProvider = new ServiceCollection()
     .AddSingleton<IAction, ExitAction>()
     .AddSingleton<PaymentMethodFactory>()
     .AddSingleton<ShippingMethodFactory>()
-    .AddSingleton<ProcessOrder>()
+    .AddSingleton<ProcessOrderStep>()
     .AddSingleton<CheckoutStepList>()
     .AddSingleton<IShippingMethod, FreeShipping>()
     .AddSingleton<IShippingMethod, ExressShipping>()

@@ -1,7 +1,6 @@
-using ECommerceSystem.Features.Shared;
 using ECommerceSystem.Features.Shared.Renderers;
 
-namespace ECommerceSystem.Features.Basket.Checkout.PaymentMethods;
+namespace ECommerceSystem.Features.Basket.Checkout.Models.PaymentMethods;
 
 public class PaypalPayment : IPaymentMethod
 {

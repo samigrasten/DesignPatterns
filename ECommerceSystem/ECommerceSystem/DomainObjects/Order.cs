@@ -1,5 +1,5 @@
-using ECommerceSystem.Features.Basket.Checkout.PaymentMethods;
-using ECommerceSystem.Features.Basket.Checkout.ShippingMethods;
+using ECommerceSystem.Features.Basket.Checkout.Models.PaymentMethods;
+using ECommerceSystem.Features.Basket.Checkout.Models.ShippingMethods;
 using ECommerceSystem.Features.Shared;
 using ECommerceSystem.Features.Shared.Renderers;
 

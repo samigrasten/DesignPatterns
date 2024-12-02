@@ -1,6 +1,6 @@
-using ECommerceSystem.Features.Basket.Checkout.ShippingMethods;
+using ECommerceSystem.Features.Basket.Checkout.Models.ShippingMethods;
 
-namespace ECommerceSystem.Features.Basket.Checkout.Factories;
+namespace ECommerceSystem.Features.Basket.Checkout.CheckoutSteps.SelectShippingMethod;
 
 public class ShippingMethodFactory(IEnumerable<IShippingMethod> shippingMethods)
 {

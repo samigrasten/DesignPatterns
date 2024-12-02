@@ -1,4 +1,4 @@
-namespace ECommerceSystem.Features.Basket.Checkout.ShippingMethods;
+namespace ECommerceSystem.Features.Basket.Checkout.Models.ShippingMethods;
 
 public interface IShippingMethod
 {

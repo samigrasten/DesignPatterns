@@ -1,6 +1,6 @@
 ﻿using ECommerceSystem.Features.Shared.Renderers;
 
-namespace ECommerceSystem.Features.Basket.Checkout.Models;
+namespace ECommerceSystem.Features.Basket.Checkout.Models.CheckoutPipeline;
 
 public class Pipeline<T>(params IPipelineStep<T>[] pipelineSteps) where T:class
 {
@@ -10,9 +10,9 @@ public class Pipeline<T>(params IPipelineStep<T>[] pipelineSteps) where T:class
         {
             try
             {
-                var newContext = step.Run(context);
-                if (newContext is null) return false;
-                context = newContext;
+                var maybeNewContext = step.Run(context);
+                if (!maybeNewContext.HasValue) return false;
+                context = maybeNewContext;
             }
             catch (Exception e)
             {

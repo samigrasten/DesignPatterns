@@ -1,4 +1,4 @@
-namespace ECommerceSystem.Features.Basket.Checkout.PaymentMethods;
+namespace ECommerceSystem.Features.Basket.Checkout.Models.PaymentMethods;
 
 public interface IPaymentMethod
 {

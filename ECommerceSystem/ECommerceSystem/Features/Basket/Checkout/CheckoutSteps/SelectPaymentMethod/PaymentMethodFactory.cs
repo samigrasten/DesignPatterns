@@ -1,6 +1,6 @@
-﻿using ECommerceSystem.Features.Basket.Checkout.PaymentMethods;
+﻿using ECommerceSystem.Features.Basket.Checkout.Models.PaymentMethods;
 
-namespace ECommerceSystem.Features.Basket.Checkout.Factories;
+namespace ECommerceSystem.Features.Basket.Checkout.CheckoutSteps.SelectPaymentMethod;
 
 public class PaymentMethodFactory(IEnumerable<IPaymentMethod> paymentMethods)
 {

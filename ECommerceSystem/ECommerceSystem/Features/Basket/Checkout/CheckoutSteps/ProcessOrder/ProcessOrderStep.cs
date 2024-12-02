@@ -1,21 +1,22 @@
 using ECommerceSystem.DomainObjects;
-using ECommerceSystem.Features.Basket.Checkout.Exceptions;
 using ECommerceSystem.Features.Basket.Checkout.Models;
+using ECommerceSystem.Features.Basket.Checkout.Models.CheckoutPipeline;
+using ECommerceSystem.Features.Basket.Checkout.Models.MaybeMonad;
 
-namespace ECommerceSystem.Features.Basket.Checkout.CheckoutSteps;
+namespace ECommerceSystem.Features.Basket.Checkout.CheckoutSteps.ProcessOrder;
 
-public class ProcessOrder(OrderRepository orderRepository) : IPipelineStep<CheckoutContext>
+public class ProcessOrderStep(OrderRepository orderRepository) : IPipelineStep<CheckoutContext>
 {
     private readonly HashSet<IObserver<Order>> _observers = [];
     
-    public CheckoutContext? Run(CheckoutContext context)
+    public Maybe<CheckoutContext> Run(CheckoutContext context) 
     {
         var order = context.OrderBasket.ToOrder(context.PaymentMethod, context.ShippingMethod);
         orderRepository.SaveOrder(order);
         if (!order.ProcessPayment())
         {
             SendFailedNotification(new PaymentProcessingError(order, "Payment failed. Order not placed."));
-            return null;
+            return Maybe<CheckoutContext>.None;
         }
         
         SendOrderProcessedNotification(order);

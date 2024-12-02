@@ -1,6 +1,6 @@
 using ECommerceSystem.DomainObjects;
 
-namespace ECommerceSystem.Features.Basket.Checkout;
+namespace ECommerceSystem.Features.Basket.Checkout.CheckoutSteps.ProcessOrder;
 
 public class OrderRepository
 {
