@@ -13,7 +13,7 @@ public class Pipeline<T>(params IPipelineStep<T>[] pipelineSteps) where T:class
             try
             {
                 var maybeNewContext = step.Run(context);
-                if (!maybeNewContext.HasValue) return OperationResult.Fail("Pipeline step returned None");
+                if (!maybeNewContext.HasValue) return OperationResult.Fail("Checkout was interrupted");
                 context = maybeNewContext;
             }
             catch (Exception)

@@ -17,7 +17,7 @@ using ECommerceSystem.Features.Shared;
 using ECommerceSystem.Features.Shared.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-var serviceProvider = new ServiceCollection()
+using (var serviceProvider = new ServiceCollection()
     .AddLogging()
     .AddSingleton<MainMenu>()
     .AddSingleton<CommandReader>()
@@ -42,8 +42,9 @@ var serviceProvider = new ServiceCollection()
     .AddSingleton<IPaymentMethod, CryptoPayment>()
     .AddSingleton<IObserver<Order>, CreateOrderConfirmation>()
     .AddSingleton<IObserver<Order>, SendUserNotification>()
-    .BuildServiceProvider();
-
-Console.OutputEncoding = System.Text.Encoding.UTF8;
-var mainMenu = serviceProvider.GetService<MainMenu>();
-mainMenu?.Run();
+    .BuildServiceProvider())
+{
+    Console.OutputEncoding = System.Text.Encoding.UTF8;
+    var mainMenu = serviceProvider.GetService<MainMenu>();
+    mainMenu?.Run();    
+}

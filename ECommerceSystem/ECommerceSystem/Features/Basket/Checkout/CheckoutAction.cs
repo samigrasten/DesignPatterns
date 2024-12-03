@@ -9,7 +9,7 @@ using ECommerceSystem.Features.Shared.Renderers;
 
 namespace ECommerceSystem.Features.Basket.Checkout;
 
-public sealed class CheckoutAction : IAction, IDisposable
+public sealed class CheckoutAction :  IAction, IDisposable
 {
     private readonly CheckoutContext _context;
     private readonly List<Unsubscriber<Order>> _processors;
