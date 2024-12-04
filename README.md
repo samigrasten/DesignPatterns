@@ -6,6 +6,7 @@ Few tips for refactoring
 - Focus is only in structuring code
 - Do not pay attention on UI
 - No need to validate user inputs
+- No need for database, lists are enough for this exercise
 
 Below are listed some design patterns which you may find helpful:
 - Factory (https://devwithjosh.com/understanding-the-factory-pattern-in-c)
